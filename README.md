@@ -67,3 +67,12 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Pasos
+
+Instalar Laravel Collective
+Instalar Caffeinated Shinobi
+Modificar la longitud de los campos unicos en el ServiceProvider, para esto agregamos:
+    Schema::defaultStringLength(120);
+Luego hacemos "php artisan migrate" en la consola, para migrar todas las tablas de roles y usuarios.
+Se crean los seeders para permisos, usuario.
