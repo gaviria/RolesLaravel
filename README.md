@@ -76,3 +76,6 @@ Modificar la longitud de los campos unicos en el ServiceProvider, para esto agre
     Schema::defaultStringLength(120);
 Luego hacemos "php artisan migrate" en la consola, para migrar todas las tablas de roles y usuarios.
 Se crean los seeders para permisos, usuario.
+se crea el scaffolding del Auth de laravel para registro de usuario
+se crean los Middleware de Chinobi
+
