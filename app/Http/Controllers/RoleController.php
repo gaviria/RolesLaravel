@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Caffeinated\Shinobi\Models\Permission;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -27,7 +28,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('roles.create');
+        $permissions = Permission::all();
+        return view('roles.create', compact('permissions'));
     }
 
     /**
@@ -38,7 +40,12 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $role = Role::create($request->all());
+        $role->permissions()->sync($request->get('permissions')); //permission have roles, sync request roles data //Rlation many to many
+
+        return redirect()->route('roles.edit', $role->id);
+
+
     }
 
     /**
@@ -61,8 +68,9 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $user = Role::find($id);
-        return view('roles.edit', compact('roles'));
+        $role = Role::find($id);
+        $permissions = Permission::all();
+        return view('roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -74,10 +82,10 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = Role::find($id);
-        $user->update($request->all());
+        $role = Role::find($id);
+        $role->update($request->all());
 
-        $user->roles()->sync($request->get('roles')); //user have roles, sync request roles data //Rlation many to many
+        $role->permissions()->sync($request->get('permissions')); //user have roles, sync request roles data //Rlation many to many
 
         Session::flash('ok', 'Actualizado con exito');
         return redirect()->route('roles.edit',$id);
