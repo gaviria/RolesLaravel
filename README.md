@@ -78,4 +78,4 @@ Luego hacemos "php artisan migrate" en la consola, para migrar todas las tablas 
 Se crean los seeders para permisos, usuario.
 se crea el scaffolding del Auth de laravel para registro de usuario
 se crean los Middleware de Chinobi
-
+Se agrega en user model  'ShinobiTrait'
