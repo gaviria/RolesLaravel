@@ -42,7 +42,7 @@ class RoleController extends Controller
     {
         $role = Role::create($request->all());
         $role->permissions()->sync($request->get('permissions')); //permission have roles, sync request roles data //Rlation many to many
-
+        Session::flash('ok','Role Creado con Exito');
         return redirect()->route('roles.edit', $role->id);
 
 
