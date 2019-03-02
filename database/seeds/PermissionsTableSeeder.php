@@ -31,9 +31,21 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         Permission::Create([
+            'name'=>'Guardar Usuarios',
+            'slug'=>'users.store',
+            'description'=>'Permite guardar un usuario del sistema',
+        ]);
+
+        Permission::Create([
             'name'=>'Editar Usuarios',
             'slug'=>'users.edit',
             'description'=>'Edita los datos de los usuarios del sistema',
+        ]);
+
+        Permission::Create([
+            'name'=>'Actualizar Usuarios',
+            'slug'=>'users.update',
+            'description'=>'Actualiza los datos de los usuarios del sistema',
         ]);
 
         Permission::Create([
@@ -57,9 +69,15 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         Permission::Create([
-            'name'=>'Ver Roles',
+            'name'=>'Crear Roles',
             'slug'=>'roles.create',
             'description'=>'Permite ver el detalle de cada roles del sistema',
+        ]);
+
+        Permission::Create([
+            'name'=>'Guardar Roles',
+            'slug'=>'store.create',
+            'description'=>'Permite guardar el detalle de cada roles del sistema',
         ]);
 
         Permission::Create([
@@ -69,9 +87,20 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         Permission::Create([
+            'name'=>'Actualizar Roles',
+            'slug'=>'roles.update',
+            'description'=>'Actualiza los datos de los roles del sistema',
+        ]);
+
+        Permission::Create([
             'name'=>'Eliminar Roles',
             'slug'=>'roles.destroy',
             'description'=>'Elimina los roles del sistema',
+        ]);
+
+        \App\Models\RoleUser::Create([
+            "role_id" => 1,
+            "user_id" => 1
         ]);
     }
 }

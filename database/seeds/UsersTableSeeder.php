@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //create Admin user
-        User::crete([
+        User::create([
         'name' => 'Administrador',
         'email' => 'prueba@prueba.com',
         'email_verified_at' => now(),
