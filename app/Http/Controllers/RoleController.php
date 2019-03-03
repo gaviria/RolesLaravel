@@ -6,6 +6,7 @@ use Caffeinated\Shinobi\Models\Permission;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Yajra\DataTables\DataTables;
 
 class RoleController extends Controller
 {
@@ -16,9 +17,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::paginate(5);
-
-        return view('roles.index', compact('roles'));
+        //$roles = Role::paginate(5);
+        return view('roles.index');
     }
 
     /**
@@ -104,5 +104,11 @@ class RoleController extends Controller
         $role->delete();
         Session::flash('ok', 'Borrado con exito');
         return redirect()->route('roles.index');
+    }
+
+    public function rolesDataTables()
+    {
+//        return datatables()->of(Role::all())->toJson();
+        return DataTables::of(Role::query())->toJson();
     }
 }

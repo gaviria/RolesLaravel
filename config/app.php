@@ -163,9 +163,10 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Package Service Providers...
+         * My Package Service Providers...
          */
         Collective\Html\HtmlServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class, //optional
 
         /*
          * Application Service Providers...
@@ -228,6 +229,7 @@ return [
         //My Aliases
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class, //optional
 
     ],
 

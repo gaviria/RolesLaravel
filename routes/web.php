@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('roles/{role}/edit','RoleController@edit')->name('roles.edit')->middleware('permission:roles.edit');
     Route::get('roles/{role}','RoleController@show')->name('roles.show')->middleware('permission:roles.show');
     Route::delete('roles/{role}','RoleController@destroy')->name('roles.destroy')->middleware('permission:roles.destroy');
+    Route::get('api/roles/datatables','RoleController@rolesDataTables')->name('roles.datatables')->middleware('permission:roles.datatables');
 
     //Users
     Route::get('users','UserController@index')->name('users.index')->middleware('permission:users.index');
